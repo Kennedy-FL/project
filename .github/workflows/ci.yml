@@ -7,10 +7,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Clonar o código
       uses: actions/checkout@v2
 
-    - name: Set up Python
+    - name: Configurar o python
       uses: actions/setup-python@v2
       with:
         python-version: '3.9'
@@ -34,8 +34,8 @@ jobs:
         username: ${{ secrets.EMAIL_USERNAME }}
         password: ${{ secrets.EMAIL_PASSWORD }}
         subject: 'CI Pipeline Failed'
-        body: 'The CI pipeline failed. Please check the logs for details.'
-        to: 'your-email@example.com'
+        body: 'Sua pipeline falhou'
+        to: 'kennedyfigueiredodelima@gmail.com'
         from: 'ci-notifications@example.com'
 
   deploy:
