@@ -47,3 +47,14 @@ jobs:
     steps:
       - name: Run a one-line script
         run: echo deploy dev
+  
+  deploy-homolg:
+    runs-on: ubuntu-latest
+    environment:
+      name: homolog
+      url: 'kenneyhomolog.com'
+    needs: deploy-dev
+    steps:
+        - name: Run a one-line script
+          run: echo deploy homolog     
+    
