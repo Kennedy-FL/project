@@ -9,4 +9,4 @@ def client():
 def test_hello(client):
     rv = client.get('/')
     json_data = rv.get_json()
-    assert json_data['message'] == 'Hello, World!'
+    assert json_data['message'] == 'Hello, NTT DATA!'
