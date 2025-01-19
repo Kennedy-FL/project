@@ -48,7 +48,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Instalando o Vercel
-      run: npm install--global vercel
+      run: npm install --global vercel
 
     - name: Pull Vercel Environment information
       run: vercel pull --yes --environment=dev --token=${{secrets.TOKEN_VERCEL}}
