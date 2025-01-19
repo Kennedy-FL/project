@@ -48,4 +48,4 @@ jobs:
       - name: Deploy to Vercel
         run: npx vercel --prod --yes
         env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_DEPLOY }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
