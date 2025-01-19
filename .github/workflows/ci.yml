@@ -47,6 +47,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Deploy para Render
+    - name: Deploy para Render -
       run: |
         curl -X POST ${{ secrets.URL_RENDER }}
