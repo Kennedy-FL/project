@@ -4,8 +4,7 @@ from app.main import app
 @pytest.fixture
 def client():
     with app.test_client() as client:
-        yield client
-       error12
+        yield client    
 
 def test_hello(client):
     rv = client.get('/')
