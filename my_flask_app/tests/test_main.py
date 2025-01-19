@@ -5,6 +5,7 @@ from app.main import app
 def client():
     with app.test_client() as client:
         yield client
+        error
 
 def test_hello(client):
     rv = client.get('/')
