@@ -38,23 +38,14 @@ jobs:
         to: 'your-email@example.com'
         from: 'ci-notifications@example.com'
 
-  deploy-dev: 
+  deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: dev
-      url: 'kennedylima.com'
     needs: build
     steps:
-      - name: Run a one-line script
-        run: echo deploy dev
-  
-  deploy-homolg:
-    runs-on: ubuntu-latest
-    environment:
-      name: homolog
-      url: 'kenneyhomolog.com'
-    needs: deploy-dev
-    steps:
-        - name: Run a one-line script
-          run: echo deploy homolog     
-    
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to Vercel
+        run: npx vercel --prod
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_DEPLOY }}
