@@ -47,7 +47,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Deploy to Vercel
-      run: npx vercel --prod --yes
-      env:
-        VERCEL_TOKEN: ${{ secrets.TOKEN_VERCEL }}
+    - name: Instalando o Vercel
+      run: npm install--global vercel
+
+    - name: Pull Vercel Environment information
+      run: vercel pull --yes --environment=dev --token=${{secrets.TOKEN_VERCEL}}
+
+    - name: Deploy
+      run: vercel deploy --prebuilt --dev --token=${{secrets.TOKEN_VERCEL}}
