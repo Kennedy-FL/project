@@ -25,18 +25,18 @@ Gatilhos
 
 Este workflow é acionado quando há um push para a branch main.
 
-ame: CI - NTT DATA
-
-on:
-  push:
-    branches:
-        - main
+  Name: CI - NTT DATA
+  
+  on:
+    push:
+      branches:
+          - main
 
 Jobs
 
 O workflow é composto por três jobs principais: build, deploy e notify.
 
-build
+  build
 
 Este job realiza a construção e testes do projeto.
 
@@ -44,43 +44,43 @@ Etapas:
 
 Clonar o repositório:
 
-- name: Clonar o código
-  uses: actions/checkout@v2
+  - name: Clonar o código
+    uses: actions/checkout@v2
 
 Configurar o Python:
 
-- name: Configurar o python
-  uses: actions/setup-python@v2
-  with:
-    python-version: '3.9'
+  - name: Configurar o python
+    uses: actions/setup-python@v2
+    with:
+      python-version: '3.9'
 
 Instalar dependências:
 
-- name: Instalar as dependências
-  run: |
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
+  - name: Instalar as dependências
+    run: |
+      python -m pip install --upgrade pip
+      pip install -r requirements.txt
 
 Executar testes:
 
-- name: Run tests
-  run: |
-    pytest
+  - name: Run tests
+    run: |
+      pytest
 
 Gerar artefatos:
 
-- name: Criar artefato com resultados dos testes
-  run: |
-    mkdir -p artifact
-    pytest > artifact/test_results.log
+  - name: Criar artefato com resultados dos testes
+    run: |
+      mkdir -p artifact
+      pytest > artifact/test_results.log
 
 Upload dos artefatos:
-
-- name: Fazer upload do artefato
-  uses: actions/upload-artifact@v3
-  with:
-      name: test-results-artifact
-      path: artifact/test_results.log
+  
+  - name: Fazer upload do artefato
+    uses: actions/upload-artifact@v3
+    with:
+        name: test-results-artifact
+        path: artifact/test_results.log
 
 deploy
 
@@ -90,13 +90,13 @@ Etapas:
 
 Instalar o Vercel:
 
-- name: Instalando o vercel
-  run: npm install --global vercel
+  - name: Instalando o vercel
+    run: npm install --global vercel
 
 Realizar deploy:
 
-- name: Deploy
-  run: vercel deploy --yes --token=${{secrets.TOKEN_VERCEL}} --name my-project
+  - name: Deploy
+    run: vercel deploy --yes --token=${{secrets.TOKEN_VERCEL}} --name my-project
 
 notify
 
@@ -106,17 +106,17 @@ Etapas:
 
 Enviar e-mail de notificação:
 
-- name: Enviar e-mail de notificação
-  uses: dawidd6/action-send-mail@v3
-  with:
-    server_address: smtp.gmail.com
-    server_port: 587
-    username: ${{ secrets.EMAIL_USERNAME }}
-    password: ${{ secrets.EMAIL_PASSWORD }}
-    subject: 'CI Pipeline Status'
-    body: 'CI Pipeline Failed'
-    to: ${{vars.VAR_EMAIL}}
-    from: 'ci-notifications@gmail.com'
+  - name: Enviar e-mail de notificação
+    uses: dawidd6/action-send-mail@v3
+    with:
+      server_address: smtp.gmail.com
+      server_port: 587
+      username: ${{ secrets.EMAIL_USERNAME }}
+      password: ${{ secrets.EMAIL_PASSWORD }}
+      subject: 'CI Pipeline Status'
+      body: 'CI Pipeline Failed'
+      to: ${{vars.VAR_EMAIL}}
+      from: 'ci-notifications@gmail.com'
 
 Variáveis e Segredos
 
