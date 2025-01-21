@@ -34,9 +34,9 @@ jobs:
         username: ${{ secrets.EMAIL_USERNAME }}
         password: ${{ secrets.EMAIL_PASSWORD }}
         subject: 'CI Pipeline Failed'
-        body: 'Sua pipeline falhou'
-        to: 'kennedyfigueiredodelima@gmail.com'
-        from: 'ci-notifications@example.com'
+        body: 'CI Pipeline Failed'
+        to: ${{vars.VAR_EMAIL}}
+        from: 'ci-notifications@gmail.com'
 
   deploy:
     runs-on: ubuntu-latest
@@ -44,7 +44,7 @@ jobs:
 
     steps:
       
-    - name: Checkout code
+    - name: Clonar o código
       uses: actions/checkout@v2
 
     - name: Deploy para Render 
