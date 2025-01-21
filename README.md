@@ -3,24 +3,6 @@ Documentação do Workflow de CI - NTT DATA
 
 Este documento descreve o fluxo de trabalho de integração contínua (CI) configurado no GitHub Actions para o projeto NTT DATA.
 
-Sumário
-
-Visão Geral
-
-Gatilhos
-
-Jobs
-
-build
-
-deploy
-
-notify
-
-Variáveis e Segredos
-
-Execução
-
 Visão Geral
 
 O fluxo de trabalho automatiza as seguintes etapas:
