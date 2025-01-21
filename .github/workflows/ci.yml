@@ -35,7 +35,7 @@ jobs:
         password: ${{ secrets.EMAIL_PASSWORD }}
         subject: 'CI Pipeline Failed'
         body: 'CI Pipeline Failed'
-        to: ${{vars.VAR_EMAIL}}
+        to: 'kennedyfiguiredodelima@gmail.com'
         from: 'ci-notifications@gmail.com'
 
   deploy:
