@@ -1,4 +1,3 @@
-# project
 Documentação do Workflow de CI - NTT DATA
 
 Este documento descreve o fluxo de trabalho de integração contínua (CI) configurado no GitHub Actions para o projeto NTT DATA.
@@ -7,23 +6,17 @@ Visão Geral
 
 O fluxo de trabalho automatiza as seguintes etapas:
 
-Clonagem do repositório.
-
-Configuração do ambiente Python.
-
-Instalação das dependências.
-
-Execução de testes.
-
-Geração de artefatos de teste.
-
-Implantação na plataforma Vercel.
-
-Envio de notificação por e-mail em caso de falha.
+ - Clonagem do repositório.
+ - Configuração do ambiente Python.
+ - Instalação das dependências.
+ - Execução de testes.
+ - Geração de artefatos de teste.
+ - Implantação na plataforma Vercel.
+ - Envio de notificação por e-mail em caso de falha.
 
 Gatilhos
 
-Este workflow é acionado quando há um push para a branch main.
+ - Este workflow é acionado quando há um push para a branch main.
 
   Name: CI - NTT DATA
   
@@ -34,11 +27,11 @@ Este workflow é acionado quando há um push para a branch main.
 
 Jobs
 
-O workflow é composto por três jobs principais: build, deploy e notify.
+ - O workflow é composto por três jobs principais: build, deploy e notify.
 
   build
 
-Este job realiza a construção e testes do projeto.
+ - Este job realiza a construção e testes do projeto.
 
 Etapas:
 
@@ -84,27 +77,27 @@ Upload dos artefatos:
 
 deploy
 
-Este job realiza a implantação do projeto na Vercel após a execução bem-sucedida do job build.
+ - Este job realiza a implantação do projeto na Vercel após a execução bem-sucedida do job build.
 
 Etapas:
 
-Instalar o Vercel:
+ - Instalar o Vercel:
 
   - name: Instalando o vercel
     run: npm install --global vercel
 
-Realizar deploy:
+ - Realizar deploy:
 
   - name: Deploy
     run: vercel deploy --yes --token=${{secrets.TOKEN_VERCEL}} --name my-project
 
 notify
 
-Este job é executado apenas em caso de falha nos jobs anteriores.
+ - Este job é executado apenas em caso de falha nos jobs anteriores.
 
 Etapas:
 
-Enviar e-mail de notificação:
+ - Enviar e-mail de notificação:
 
   - name: Enviar e-mail de notificação
     uses: dawidd6/action-send-mail@v3
@@ -130,6 +123,11 @@ VAR_EMAIL: Endereço de e-mail do destinatário das notificações.
 
 Execução
 
+Para executar este fluxo de trabalho, basta fazer um push na branch main do repositório. O GitHub Actions iniciará automaticamente os jobs definidos.
+
+Caso ocorra uma falha, um e-mail será enviado para o destinatário especificado nas variáveis de ambiente.
+
+Essa documentação fornece uma visão detalhada do pipeline de CI, garantindo que todos os envolvidos compreendam o fluxo de trabalho e os processos envolvidos.
 Para executar este fluxo de trabalho, basta fazer um push na branch main do repositório. O GitHub Actions iniciará automaticamente os jobs definidos.
 
 Caso ocorra uma falha, um e-mail será enviado para o destinatário especificado nas variáveis de ambiente.
