@@ -52,14 +52,13 @@ jobs:
     - name: Configurar SSH
       run: |
         mkdir -p ~/.ssh
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 --decode > ~/.ssh/id_rsa
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H SEU_IP_DA_EC2 >> ~/.ssh/known_hosts
 
     - name: Testar conexão SSH
       run: |
         ssh -o StrictHostKeyChecking=no ubuntu@SEU_IP_DA_EC2 "echo Conexão SSH funcionando!"
-
 
     - name: Deploy para a EC2
       run: |
