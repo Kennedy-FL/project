@@ -52,11 +52,11 @@ jobs:
     - name: Configurar SSH
       run: |
         mkdir -p ~/.ssh
-        ls -la ~/.ssh  # Verificando se o diretório foi criado
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        ls -la ~/.ssh  # Verificando se o arquivo id_rsa foi criado
-        cat ~/.ssh/id_rsa  # Verificando o conteúdo do arquivo
-        chmod 600 ~/.ssh/id_rsa
+        ls -la ~/.ssh  # Verificando o diretório e a chave
+        chmod 600 ~/.ssh/id_rsa  # Corrigindo permissões
+        ls -la ~/.ssh  # Verificando novamente as permissões do arquivo
+        cat ~/.ssh/id_rsa  # Verificando conteúdo da chave
         ssh-keyscan -H 18.191.239.47 >> ~/.ssh/known_hosts
 
     - name: Testar conexão SSH
