@@ -61,11 +61,11 @@ jobs:
 
     - name: Testar conexão SSH
       run: |
-        ssh -o StrictHostKeyChecking=no ubuntu@18.191.239.47 "echo Conexão SSH funcionando!"
+        ssh -o StrictHostKeyChecking=no ubuntu@3.147.67.185 "echo Conexão SSH funcionando!"
 
     - name: Deploy para a EC2
       run: |
-        ssh ubuntu@18.191.239.47 << 'EOF'
+        ssh ubuntu@3.147.67.185 << 'EOF'
           cd ~/flask-app
           git pull origin main
           source venv/bin/activate
