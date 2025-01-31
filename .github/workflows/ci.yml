@@ -52,6 +52,7 @@ jobs:
     - name: Configurar SSH
       run: |
         mkdir -p ~/.ssh
+        cat ~/.ssh/id_rsa
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H 18.191.239.47 >> ~/.ssh/known_hosts
