@@ -71,6 +71,7 @@ jobs:
           source venv/bin/activate
           pip install -r requirements.txt
           sudo systemctl restart flask
-          /home/ubuntu/flask-app/venv/bin/gunicorn --bind 0.0.0.0:5000 app:app
+          gunicorn --chdir /home/ubuntu/flask-app/my_flask_app/app -w 3 -b 0.0.0.0:5000 main:app
+
 
         EOF
