@@ -57,15 +57,15 @@ jobs:
         chmod 600 ~/.ssh/id_rsa  # Corrigindo permissões
         ls -la ~/.ssh  # Verificando novamente as permissões do arquivo
         cat ~/.ssh/id_rsa  # Verificando conteúdo da chave
-        ssh-keyscan -H 3.147.67.185 >> ~/.ssh/known_hosts
+        ssh-keyscan -H 18.223.64.246 >> ~/.ssh/known_hosts
 
     - name: Testar conexão SSH
       run: |
-        ssh -o StrictHostKeyChecking=no ubuntu@3.147.67.185 "echo Conexão SSH funcionando!"
+        ssh -o StrictHostKeyChecking=no ubuntu@18.223.64.246 "echo Conexão SSH funcionando!"
 
     - name: Deploy para a EC2
       run: |
-        ssh ubuntu@3.147.67.185 << 'EOF'
+        ssh ubuntu@18.223.64.246 << 'EOF'
           cd ~/flask-app
           git pull origin main
           source venv/bin/activate
